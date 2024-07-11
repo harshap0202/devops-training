@@ -57,7 +57,7 @@ plan -> code -> build -> test -> release -> deploy -> operate -> monitor -> plan
           
 Linux
 least resource intensive os, 
-secure,       
+secure,
 
 
 

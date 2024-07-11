@@ -14,7 +14,6 @@ Server Name: WebServer01
 IP Address: 192.168.1.100
 OS: Ubuntu 20.04
 ```
-Save and exit (Ctrl+O, Enter, Ctrl+X).
 
 ![alt text](<img/Screenshot from 2024-07-09 12-13-04.png>)
 
@@ -30,7 +29,6 @@ Append the following text:
 ```
 Installed Packages: Apache, MySQL, PHP
 ```
-Save and exit (Esc, :wq).
 
 ![alt text](<img/Screenshot from 2024-07-09 12-13-44.png>)
         
@@ -45,8 +43,6 @@ Add the following text:
 ```
 Configuration Complete: Yes
 ```
-
-Save and exit (Esc, :wq).
 
 ![alt text](<img/Screenshot from 2024-07-09 12-14-24.png>)
 
