@@ -15,9 +15,9 @@ docker run --name my-nginx -d -p 8080:80 nginx
 ```
 
 > --name my-nginx: Assigns a name to the container.
-
+>
 > -d: Runs the container in detached mode.
-
+>
 > -p 8080:80: Maps port 8080 on your host to port 80 in the container.
 
 Verify the Container is Running:
