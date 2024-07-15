@@ -1,9 +1,12 @@
 # Docker Project 01
-Project Overview
+
+**Project Overview**
+
 In this project, you'll go through all three lifecycles of Docker: pulling an image and creating a container, modifying the container and creating a new image, and finally, creating a Dockerfile to build and deploy a web application.
 
 ## Part 1: Creating a Container from a Pulled Image
-Objective: Pull the official Nginx image from Docker Hub and run it as a container.
+
+**Objective**: Pull the official Nginx image from Docker Hub and run it as a container.
 Steps:
 
 ```bash
@@ -12,24 +15,15 @@ docker pull nginx
 
 # Run the Nginx Container:
 docker run --name my-nginx -d -p 8080:80 nginx
-```
 
-> --name my-nginx: Assigns a name to the container.
->
-> -d: Runs the container in detached mode.
->
-> -p 8080:80: Maps port 8080 on your host to port 80 in the container.
-
-Verify the Container is Running:
-```bash
+#Verify the Container is Running:
 docker ps
 ```
 
-Visit http://localhost:8080 in your browser. You should see the Nginx welcome page.
-
 ![alt text](<img/Screenshot from 2024-07-11 10-32-47.png>)
 
-![alt text](<img/Screenshot from 2024-07-11 10-37-19.png>)
+Visit http://localhost:8080 in your browser. You should see the Nginx welcome page.
+
 
 ## Part 2: Modifying the Container and Creating a New Image
 Objective: Modify the running Nginx container to serve a custom HTML page and create a new image from this modified container.
@@ -56,7 +50,7 @@ docker run --name my-custom-nginx -d -p 8081:80 custom-nginx
 
 The custom html page will be now available on http://localhost:8081 in browser
 
-
+![alt text](<img/Screenshot from 2024-07-11 10-37-19.png>)
 
 ## Part 3: Creating a Dockerfile to Build and Deploy a Web Application
 
@@ -132,12 +126,14 @@ docker rmi nginx custom-nginx my-webapp-image
 
 ---
 # Docker Project 02
-Project Overview
+
+**Project Overview**
+
 In this advanced project, you'll build a full-stack application using Docker. The application will consist of a front-end web server (Nginx), a back-end application server (Node.js with Express), and a PostgreSQL database. You will also set up a persistent volume for the database and handle inter-container communication. This project will take more time and involve more detailed steps to ensure thorough understanding.
 
 ## Part 1: Setting Up the Project Structure
 
-Objective: Create a structured project directory with necessary configuration files.
+**Objective**: Create a structured project directory with necessary configuration files.
 
 Steps:
 ```bash
