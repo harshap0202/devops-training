@@ -36,13 +36,6 @@ platform independent,
 
 
 Steps : 
-
-
-
-
-
-
-[15:15] Santosh Pagire
 sudo groupadd docker
 
 sudo usermod -aG docker $USER
