@@ -1,10 +1,28 @@
 # kubenetes
 
-docker swarm is for low level applications
+ - docker swarm is for low level applications.
+  - kebernetes is for high level applications,
 
-kebernetes is for high level applications,
-kube requires complex setup, 
+#### Installing Kubernetes
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+kubectl version
+```
 
+#### installing minikube
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+```
+
+#### connect minikube to virtual box
+```bash
+minikube start --driver=virtualbox
+minikube status
+kubectl get nodes
+```
 
 ```
 kubectl -> dashboard -> kubernetes cluster  -> master node (control plane)
@@ -37,13 +55,14 @@ synchronous, asynchronous
 
 
 
+```
                                        -> service1.pod1
                                        -> service1.pod2
 user -> ingress -> services - service1 -> service1.pod3
                               service2 -> service2.pod1
                                        -> service2.pod2
                                        -> service2.pod3
-
+```
 
 
 

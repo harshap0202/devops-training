@@ -24,12 +24,16 @@ docker swarm init
 docker service create --name nginx-service --publish 8080:80 nginx
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 10-59-47.png>)
+
 ### Step 2: Set up Kubernetes Using Minikube
 
 ```bash
 # Start Minikube
 minikube start
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-01-24.png>)
 
 Create a deployment file named webapp-deployment.yaml:
 
@@ -55,6 +59,8 @@ spec:
         - containerPort: 80
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-02-24.png>)
+
 ```bash
 # Apply the deployment:
 kubectl apply -f webapp-deployment.yaml
@@ -62,6 +68,8 @@ kubectl apply -f webapp-deployment.yaml
 # Expose the Deployment
 kubectl expose deployment webapp --type=NodePort --port=80
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-02-54.png>)
 
 ### Step 3: Deploy a Web Application Using Docker Compose
 
@@ -85,6 +93,9 @@ volumes:
 # Deploy using Docker Compose
 docker-compose up -d
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-07-55.png>)
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-06-59.png>)
 
 ### Step 4: Use a Single Shared Volume Across Multiple Containers
 
@@ -153,7 +164,7 @@ chmod +x deploy.sh
 
 ---
 
-# Project 02 - 1 Hour
+# Project 02
 Comprehensive Deployment of a Multi-Tier Application with CI/CD Pipeline
 
 ---
