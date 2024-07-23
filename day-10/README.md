@@ -1,8 +1,11 @@
-# Day 10 Task
+# Day 10 
+
+## Task 1 Shell
 
 ### Project Overview: Develop a comprehensive shell script for sysops to automate system monitoring and generate detailed reports. The script will leverage advanced Linux shell scripting techniques to monitor system metrics, capture logs, and provide actionable insights for system administrators.
 
 ### Deliverables:
+
 ## 1. Script Initialization:
  - Initialize script with necessary variables and configurations.
  - Validate required commands and utilities availability.
@@ -103,3 +106,26 @@ fi
  - Create a README file detailing script usage, prerequisites, and customization options.
  - Include examples of typical outputs and how to interpret them.
 
+---
+
+## Task 2 Jenkins
+
+### Project Overview: Create a jenkins freestyle pipeline that runs a code from a github repository. the build should run at every 2 minutes.
+
+## 1. Creating a Jenkins Freestyle Project 
+![alt text](<img/Screenshot from 2024-07-22 09-56-11.png>)
+
+## 2. Adding Git Repo
+![alt text](<img/Screenshot from 2024-07-22 09-57-24.png>)
+
+## 3. Setting Build Trigger
+![alt text](<img/Screenshot from 2024-07-22 09-58-09.png>)
+
+## 4. Setting Build Steps
+![alt text](<img/Screenshot from 2024-07-22 09-58-47.png>)
+
+## 5. Console Output
+![alt text](<img/Screenshot from 2024-07-22 10-00-43.png>)
+
+## 6. Build History
+![alt text](<img/Screenshot from 2024-07-22 10-03-49.png>)
