@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven-3.9.0'
+    }
+
+    stages {
+        stage ('clone repo') {
+            steps {
+                git url: 'https://github.com/harshap0202/sample-maven-project.git', branch: 'main'
+            }
+        }
+
+        stage ('maven build') {
+            steps {
+                    sh "mvn clean install"                        
+                }
+            }
+
+        stage ('maven test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage ('archive artifact') {
+            steps {
+                archiveArtifact artifacts: '**/target/*.jar', allowEmptyArtifact: true
+            }
+        }
+    }
+}
