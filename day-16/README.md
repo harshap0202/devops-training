@@ -85,9 +85,14 @@ Problem Statement: Your team needs to automate repetitive tasks such as installi
  - Write a playbook to install a specific package on all managed nodes.
  - Create a playbook to configure a service with specific parameters.
  - Develop a playbook to manage files, such as creating, deleting, and modifying files on managed nodes.
- - Testing and Verification:
+
+### Testing and Verification:
  - Test the playbooks to ensure they run successfully and perform the intended tasks.
  - Validate the changes made by the playbooks on the managed nodes.
+
+**OUTPUT**
+![alt text](<img/Screenshot from 2024-07-30 17-30-06.png>) 
+![alt text](<img/Screenshot from 2024-07-30 17-48-54.png>)
 
 ### Documentation:
  - Detailed explanation of each playbook, including the tasks and modules used.
@@ -106,6 +111,31 @@ Implement error handling strategies using modules like block, rescue, and always
  - Logging and Notifications:
  - Configure the playbook to log errors and notify administrators of any issues encountered during execution.
  - Use Ansible modules to send notifications via email or other communication channels.
+
+```yml
+---
+- name: Error Handling Example
+  hosts: workers
+  tasks:
+    - name: Execute wrong task
+      block:
+        - name: install ngnix
+          service:
+            name: ngnix
+            state: started
+
+      rescue:
+        - name: Log error
+          debug:
+            msg: "An error occurred: {{ ansible_failed_result.msg }}"
+
+      always:
+        - name: Tasks Completed
+          debug:
+            msg: "The playbook execution has completed."
+```
+**OUTPUT**
+![alt text](<img/Screenshot from 2024-07-30 18-30-36.png>)
 
 ### Documentation:
  - Comprehensive guide on error handling in Ansible playbooks, including examples of common scenarios and solutions.
