@@ -1,0 +1,26 @@
+---
+- name: Error Handling Example
+  hosts: workers
+  tasks:
+    - name: Execute a task that might fail
+      block:
+        - name: Start a non-existent service
+          service:
+            name: non_existent_service
+            state: started
+        - name: Access a non-existent file
+          command: cat /path/to/non_existent_file
+
+      rescue:
+        - name: Log error and notify admin
+          block:
+            - name: Log error message
+              debug:
+                msg: "An error occurred: {{ ansible_failed_result.msg }}"
+            - name: Send email notification
+              mail:
+                host: smtp.example.com
+                port: 25
+                to: admin@example.com
+                subject: "Ansible Playbook Error"
+                body: "An error occurred: {{ ansible_failed_result.msg }}"
