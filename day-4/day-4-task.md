@@ -34,6 +34,8 @@ Create a custom network for the containers to communicate.
 docker network create wordpress_network
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 10-08-10.png>)
+
 ## 3. Write a Docker Compose File
 
 Create a docker-compose.yml file to define and manage the services.
@@ -76,6 +78,8 @@ networks:
   wordpress_network:
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 10-15-25.png>)
+
 ## 4. Deploy the Application with Docker Compose
 
 ```bash
@@ -85,7 +89,12 @@ docker-compose up -d
 # Verify that the containers are running.
 docker-compose ps
 ```
-Access the WordPress setup by navigating to http://localhost:8000.
+
+![alt text](<img/Screenshot from 2024-07-12 10-36-31.png>)
+
+Access the WordPress setup by navigating to http://localhost:8000
+
+![alt text](<img/Screenshot from 2024-07-12 10-37-01.png>)
 
 ## 5. Manage Docker Logs
 
@@ -93,9 +102,13 @@ Access the WordPress setup by navigating to http://localhost:8000.
 # View logs for a specific service.
 docker-compose logs wordpress
 
+![alt text](<img/Screenshot from 2024-07-12 10-42-57.png>)
+
 # Follow logs for real-time updates.
 docker-compose logs -f wordpress
 ```
+
+![alt text](<img/Screenshot from 2024-07-12 10-43-41.png>)
 
 ## 6. Deploy the Application Using Docker Swarm
 
@@ -103,7 +116,8 @@ Initialize Docker Swarm.
 ```bash
 docker swarm init
 ```
-![alt text](<../day-2/img/Screenshot from 2024-07-10 10-14-18.png>)
+
+![alt text](<img/Screenshot from 2024-07-12 10-47-14.png>)
 
 Convert the Docker Compose file to a Docker Stack file, docker-stack.yml.
 
@@ -149,6 +163,8 @@ networks:
   wordpress_network:
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 10-48-02.png>)
+
 ```bash
 # Deploy the stack using Docker Swarm.
 docker stack deploy -c docker-stack.yml wordpress_stack
@@ -156,6 +172,10 @@ docker stack deploy -c docker-stack.yml wordpress_stack
 # Verify the stack is running.
 docker stack services wordpress_stack
 ```
+
+![alt text](<img/Screenshot from 2024-07-12 10-48-58.png>)
+
+![alt text](<img/Screenshot from 2024-07-12 10-55-14.png>)
 
 # Project 02: 
 
@@ -186,6 +206,13 @@ docker swarm join --token <SWARM-TOKEN> <MANAGER-IP>:2377
 docker node ls
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 11-32-09.png>) 
+
+![alt text](<img/Screenshot from 2024-07-12 11-33-17.png>)
+
+![alt text](<img/Screenshot from 2024-07-12 11-51-16.png>)
+
+
 ## 2. Label Nodes for Specific Component Placement
 
 Label nodes to specify where certain components should run. 
@@ -200,6 +227,8 @@ docker node update --label-add app=true <NODE-ID>
 # Verify the labels:
 docker node inspect <NODE-ID>
 ```
+
+![alt text](<img/Screenshot from 2024-07-12 11-52-42.png>)
 
 ## 3. Create a Docker Stack File
 Create a docker-stack.yml file to define the services and node placement constraints:
@@ -243,6 +272,8 @@ networks:
   app_network:
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 12-00-08.png>)
+
 ## 4. Deploy the Application
 Deploy the stack using Docker Swarm:
 
@@ -250,6 +281,8 @@ Deploy the stack using Docker Swarm:
 docker stack deploy -c docker-stack.yml app_stack
 docker stack services app_stack
 ```
+
+![alt text](<img/Screenshot from 2024-07-12 12-01-23.png>)
 
 ## 5. Monitor and Troubleshoot Using Docker Logs
 Check the logs for the services:
@@ -275,6 +308,8 @@ services:
       replicas: 3
 ```
 
+![alt text](<img/Screenshot from 2024-07-12 12-05-24.png>)
+
 ```bash
 # Update the stack with the new configuration:
 docker stack deploy -c docker-stack.yml app_stack
@@ -282,3 +317,5 @@ docker stack deploy -c docker-stack.yml app_stack
 # Verify the changes:
 docker stack services app_stack
 ````
+
+![alt text](<img/Screenshot from 2024-07-12 12-06-39.png>)
