@@ -126,6 +126,8 @@ volumes:
 docker-compose up -d
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-08-53.png>)
+
 ### Step 5: Automate the Entire Process Using Advanced Shell Scripting
 
 Create a Shell Script deploy.sh
@@ -162,6 +164,10 @@ chmod +x deploy.sh
 ./deploy.sh
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-22-51.png>)
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-23-10.png>)
+
 ---
 
 # Project 02
@@ -185,6 +191,8 @@ Deploy a multi-tier application (frontend, backend, and database) using Docker S
 # Initialize Docker Swarm
 docker swarm init
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-53-11.png>)
 
 Create a docker-compose-swarm.yml file:
 
@@ -228,6 +236,8 @@ Deploy the stack:
 # Deploy the stack using Docker Swarm
 docker stack deploy -c docker-compose-swarm.yml myapp
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 11-53-35.png>)
 
 ### Step 2: Set up Kubernetes Using Minikube
 
@@ -296,6 +306,8 @@ spec:
           claimName: shared-pvc
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 12-02-43.png>)
+
 Create db-deployment.yaml:
 ```yml
 apiVersion: apps/v1
@@ -331,6 +343,8 @@ spec:
           claimName: db-pvc
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 12-03-13.png>)
+
 Create shared-pvc.yaml:
 ```yml
 apiVersion: v1
@@ -344,6 +358,8 @@ spec:
     requests:
       storage: 1Gi
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 12-03-42.png>)
 
 Create db-pvc.yaml:
 ```yml
@@ -359,6 +375,8 @@ spec:
       storage: 1Gi
 ```
 
+![alt text](<img/project-1/Screenshot from 2024-07-15 12-04-32.png>)
+
 Apply the deployments:
 ```bash
 kubectl apply -f shared-pvc.yaml
@@ -367,6 +385,8 @@ kubectl apply -f frontend-deployment.yaml
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f db-deployment.yaml
 ```
+
+![alt text](<img/project-1/Screenshot from 2024-07-15 12-05-10.png>)
 
 ### Step 3: Deploy a Multi-Tier Application Using Docker Compose
 
