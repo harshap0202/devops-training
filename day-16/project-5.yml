@@ -2,7 +2,7 @@
 - name: Error Handling Example
   hosts: workers
   tasks:
-    - name: Execute wrong task
+    - name: install software
       block:
         - name: install ngnix
           service:
@@ -12,7 +12,7 @@
       rescue:
         - name: Log error
           debug:
-            msg: "An error occurred: {{ ansible_failed_result.msg }}"
+            msg: "An error occurred"
 
       always:
         - name: Tasks Completed

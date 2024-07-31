@@ -7,15 +7,14 @@ Problem Statement: You are tasked with deploying Ansible in a multi-node environ
 ### Control Node Setup:
  - Install Ansible on the control node.
  - Configure SSH key-based authentication between the control node and managed nodes.
- - Managed Nodes Configuration:
+
+![alt text](<img/Screenshot from 2024-07-30 18-59-46.png>)
+
+### Managed Nodes Configuration:
  - Ensure all managed nodes are properly configured to be controlled by Ansible.
  - Verify connectivity and proper setup between the control node and managed nodes.
 
 ![alt text](<img/Screenshot from 2024-07-30 16-13-06.png>)
-
-### Documentation:
- - Detailed installation and configuration steps.
- - Troubleshooting guide for common issues encountered during deployment.
 
 ---
 # Project 2: Ad-Hoc Ansible Commands
@@ -26,31 +25,27 @@ Problem Statement: Your organization needs to perform frequent, one-off administ
 
 ### Task Execution:
  - Execute commands to check disk usage across all managed nodes.
+
  ```bash
 ansible -i inventory worker-node -m command -a "df -h"
  ```
 ![alt text](<img/Screenshot from 2024-07-30 16-16-39.png>)
 
-
  - Restart a specific service on all managed nodes.
+
 ```bash
 ansible -i inventory worker-node -m service -a "name=nginx state=restarted" -b
 ```
 ![alt text](<img/Screenshot from 2024-07-30 16-17-26.png>)
 
+
  - Update all packages on a subset of managed nodes.
+
 ```bash
 ansible -i inventory worker-node -b -m apt -a "update_cache=yes"
 ```
 ![alt text](<img/Screenshot from 2024-07-30 16-35-35.png>)
 
-
-### Command Scripts:
- - Create a script or documentation for each task, detailing the ad-hoc command used and its output.
-
-### Documentation:
- - Provide a comprehensive guide on using Ansible ad-hoc commands.
- - Include examples of common administrative tasks that can be performed with ad-hoc commands.
 
 ---
 # Project 3: Working with Ansible Inventories
@@ -83,16 +78,59 @@ Problem Statement: Your team needs to automate repetitive tasks such as installi
 
 ### Playbook Creation:
  - Write a playbook to install a specific package on all managed nodes.
- - Create a playbook to configure a service with specific parameters.
- - Develop a playbook to manage files, such as creating, deleting, and modifying files on managed nodes.
+```yml
+---
+- name: Installing specific package
+  hosts: workers
+  become: yes
+  tasks: 
+    - name: install nginx
+      package:
+        name: nginx
+        state: present
+```
 
-### Testing and Verification:
- - Test the playbooks to ensure they run successfully and perform the intended tasks.
- - Validate the changes made by the playbooks on the managed nodes.
-
-**OUTPUT**
 ![alt text](<img/Screenshot from 2024-07-30 17-30-06.png>) 
+
+ - Create a playbook to configure a service with specific parameters.
+```yml
+---
+- name: Configure Nginx with specific parameters
+  hosts: workers
+  become: yes
+  tasks:
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Add custom nginx.conf
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+```
+
 ![alt text](<img/Screenshot from 2024-07-30 17-48-54.png>)
+
+ - Develop a playbook to manage files, such as creating, deleting, and modifying files on managed nodes.
+```yml
+---
+- name: Manage Nginx files
+  hosts: workers
+  become: yes
+  tasks:
+    - name: Create a new file for Nginx
+      file:
+        path: /tmp/nginx_info.txt
+        state: touch
+```
+
+![alt text](<img/Screenshot from 2024-07-30 19-05-37.png>)
 
 ### Documentation:
  - Detailed explanation of each playbook, including the tasks and modules used.
@@ -117,7 +155,7 @@ Implement error handling strategies using modules like block, rescue, and always
 - name: Error Handling Example
   hosts: workers
   tasks:
-    - name: Execute wrong task
+    - name: install software
       block:
         - name: install ngnix
           service:
@@ -127,7 +165,7 @@ Implement error handling strategies using modules like block, rescue, and always
       rescue:
         - name: Log error
           debug:
-            msg: "An error occurred: {{ ansible_failed_result.msg }}"
+            msg: "An error occurred"
 
       always:
         - name: Tasks Completed

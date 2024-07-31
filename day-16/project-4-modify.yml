@@ -7,6 +7,3 @@
       file:
         path: /tmp/nginx_info.txt
         state: touch
-        owner: root
-        group: root
-        mode: '0644'
