@@ -1,39 +1,34 @@
-# Project 01
-
+## Project 01
 Deploying a Scalable Web Application with Persistent Storage and Advanced Automation
 
----
+Overview:
+ + Step 1: Set up Docker Swarm and create a service. 
+ + Step 2: Set up Kubernetes using Minikube.
+ + Step 3: Deploy a web application using Docker Compose.
+ + Step 4: Use a single shared volume across multiple containers.
+ + Step 5: Automate the entire process using advanced shell scripting.
 
- - Objective:
-Deploy a scalable web application using Docker Swarm and Kubernetes, ensuring data persistence using a single shared volume, and automate the process using advanced shell scripting.
-
- - Overview:
-     - **Step 1:** Set up Docker Swarm and create a service.
-     - **Step 2:** Set up Kubernetes using Minikube.
-     - **Step 3:** Deploy a web application using Docker Compose.
-     - **Step 4:** Use a single shared volume across multiple containers.
-     - **Step 5:** Automate the entire process using advanced shell scripting.
-
-### Step 1: Set up Docker Swarm and Create a Service
-
+## Step 1: Set up Docker Swarm and Create a Service
+1.1 Initialize Docker Swarm
 ```bash
-# Initialize Docker Swarm
 docker swarm init
+```
 
-# Create a simple Nginx service in Docker Swarm
+1.2 Create a Docker Swarm Service
+```bash
 docker service create --name nginx-service --publish 8080:80 nginx
 ```
-
-### Step 2: Set up Kubernetes Using Minikube
-
+## Step 2: Set up Kubernetes Using Minikube
+2.1 Start Minikube
 ```bash
-# Start Minikube
 minikube start
 ```
+![alt text](<img/Screenshot from 2024-07-15 11-18-16.png>)
 
+## 2.2 Deploy a Web App on Kubernetes
 Create a deployment file named webapp-deployment.yaml:
 
-```yml
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,19 +50,22 @@ spec:
         - containerPort: 80
 ```
 
-```bash
-# Apply the deployment:
-kubectl apply -f webapp-deployment.yaml
+Apply the deployment:
 
-# Expose the Deployment
+```bash
+kubectl apply -f webapp-deployment.yaml
+```
+
+2.3 Expose the Deployment
+
+```bash
 kubectl expose deployment webapp --type=NodePort --port=80
 ```
 
-### Step 3: Deploy a Web Application Using Docker Compose
+## Step 3: Deploy a Web Application Using Docker Compose
+3.1 Create a docker-compose.yml File
 
-Create a docker-compose.yml File
-
-```yml
+```bash
 version: '3'
 services:
   web:
@@ -81,16 +79,17 @@ volumes:
   webdata:
 ```
 
+3.2 Deploy the Web Application
+
 ```bash
-# Deploy using Docker Compose
 docker-compose up -d
 ```
+![alt text](<img/Screenshot from 2024-07-15 11-19-09.png>)
 
-### Step 4: Use a Single Shared Volume Across Multiple Containers
+## Step 4: Use a Single Shared Volume Across Multiple Containers
+4.1 Update docker-compose.yml to Use a Shared Volume
 
-Update docker-compose.yml to Use a Shared Volume
-
-```yml
+```bash
 version: '3'
 services:
   web1:
@@ -109,15 +108,15 @@ services:
 volumes:
   shareddata:
 ```
+4.2 Deploy with Docker Compose
 
 ```bash
-# Deploy using Docker Compose
 docker-compose up -d
 ```
+![alt text](<img/Screenshot from 2024-07-15 11-30-15.png>)
 
-### Step 5: Automate the Entire Process Using Advanced Shell Scripting
-
-Create a Shell Script deploy.sh
+## Step 5: Automate the Entire Process Using Advanced Shell Scripting
+5.1 Create a Shell Script deploy.sh
 
 ```bash
 #!/bin/bash
@@ -143,41 +142,40 @@ docker-compose -f docker-compose-single-volume.yml up -d
 echo "Deployment completed successfully!"
 ```
 
-```bash
-# Make the script executable
-chmod +x deploy.sh
+5.2 Make the Script Executable
 
-# Run the deployment script
-./deploy.sh
+```bash
+chmod +x deploy.sh
 ```
 
----
-
-# Project 02 - 1 Hour
-Comprehensive Deployment of a Multi-Tier Application with CI/CD Pipeline
-
----
-
- - Objective:
-Deploy a multi-tier application (frontend, backend, and database) using Docker Swarm and Kubernetes, ensuring data persistence using a single shared volume across multiple containers, and automating the entire process using advanced shell scripting and CI/CD pipelines.
-
- - Overview:
-     - **Step 1:** Set up Docker Swarm and create a multi-tier service.
-     - **Step 2:** Set up Kubernetes using Minikube.
-     - **Step 3:** Deploy a multi-tier application using Docker Compose.
-     - **Step 4:** Use a single shared volume across multiple containers.
-     - **Step 5:** Automate the deployment process using advanced shell scripting.
-
-### Step 1: Set up Docker Swarm and Create a Multi-Tier Service
+5.3 Run the Script
 
 ```bash
-# Initialize Docker Swarm
+./deploy.sh
+```
+![alt text](<img/Screenshot from 2024-07-15 11-30-15.png>)
+
+
+
+## Project 02
+Comprehensive Deployment of a Multi-Tier Application with CI/CD Pipeline
+Overview:
+ + Step 1: Set up Docker Swarm and create a multi-tier service.
+ + Step 2: Set up Kubernetes using Minikube.
+ + Step 3: Deploy a multi-tier application using Docker Compose.
+ + Step 4: Use a single shared volume across multiple containers.
+ + Step 5: Automate the deployment process using advanced shell scripting.
+
+## Step 1: Set up Docker Swarm and Create a Multi-Tier Service
+1.1 Initialize Docker Swarm
+
+```bash
 docker swarm init
 ```
 
+1.2 Create a Multi-Tier Docker Swarm Service
 Create a docker-compose-swarm.yml file:
-
-```yml
+```bash
 version: '3.7'
 services:
   frontend:
@@ -212,21 +210,23 @@ volumes:
   dbdata:
 ```
 
+## Deploy the stack using Docker Swarm
+
 ```bash
-Deploy the stack:
-# Deploy the stack using Docker Swarm
 docker stack deploy -c docker-compose-swarm.yml myapp
 ```
+![alt text](<img/Screenshot from 2024-07-15 11-45-54.png>)
 
-### Step 2: Set up Kubernetes Using Minikube
+## Step 2: Set up Kubernetes Using Minikube
 
+2.1 Start Minikube
 ```bash
-# Start Minikube
 minikube start
 ```
 
+## 2.2 Create Kubernetes Deployment Files
 Create frontend-deployment.yaml:
-```yml
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -256,7 +256,7 @@ spec:
 ```
 
 Create backend-deployment.yaml:
-```yml
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -286,7 +286,8 @@ spec:
 ```
 
 Create db-deployment.yaml:
-```yml
+
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -321,7 +322,8 @@ spec:
 ```
 
 Create shared-pvc.yaml:
-```yml
+
+```bash
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -332,10 +334,8 @@ spec:
   resources:
     requests:
       storage: 1Gi
-```
 
 Create db-pvc.yaml:
-```yml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -356,11 +356,11 @@ kubectl apply -f frontend-deployment.yaml
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f db-deployment.yaml
 ```
+![alt text](<img/Screenshot from 2024-07-15 12-23-09.png>)
 
-### Step 3: Deploy a Multi-Tier Application Using Docker Compose
-
-Create a docker-compose.yml File
-```yml
+## Step 3: Deploy a Multi-Tier Application Using Docker Compose
+3.1 Create a docker-compose.yml File
+```bash
 version: '3'
 services:
   frontend:
@@ -389,11 +389,11 @@ volumes:
   dbdata:
 ```
 
+3.2 Deploy the Application
+
 ```bash
-# Deploy using Docker Compose
 docker-compose up -d
 ```
+![alt text](<img/Screenshot from 2024-07-15 15-04-52.png>)
 
-### Step 4: 
-Use a Single Shared Volume Across Multiple Containers
-Update docker-compose.yml as shown in Step 3.1 to use the shareddata volume across the frontend and backend services.
+![alt text](<img/Screenshot from 2024-07-15 12-25-32.png>)
