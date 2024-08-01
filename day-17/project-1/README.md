@@ -99,7 +99,7 @@ worker-node-01 ansible_host=*.***.**.*** ansible_user=ubuntu ansible_ssh_private
 
 ```
 
-![alt text](<img/Screenshot from 2024-08-01 00-33-53.png>)
+![alt text](<../img/Screenshot from 2024-08-01 00-33-53.png>)
 
 3. Backup Script
  - Filename: scripts/backup.sh
@@ -120,7 +120,7 @@ mysqldump -u $DB_USER -p$DB_PASSWORD $DB_NAME > $BACKUP_DIR/backup_$DATE.sql
 ```
 
 **Database Created**
-![alt text](<img/Screenshot from 2024-08-01 00-44-00.png>)
+![alt text](<../img/Screenshot from 2024-08-01 00-44-00.png>)
 
 **Backups Created**
-![alt text](<img/Screenshot from 2024-08-01 00-44-40.png>)
+![alt text](<../img/Screenshot from 2024-08-01 00-44-40.png>)
