@@ -57,4 +57,4 @@ A development team needs to establish a basic CI/CD pipeline for a web applicati
  - Inventory File:
      - Create an inventory file specifying the target server(s) for deployment.
 
-
+![alt text](<img/Screenshot from 2024-07-29 10-03-49.png>)
