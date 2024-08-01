@@ -115,10 +115,10 @@ app-server-01 ansible_host=**.***.***.*** ansible_user=ubuntu ansible_ssh_privat
 
 ```j2
 <?php
-$db_host = "database";
-$db_name = "my_db";
-$db_user = "user";
-$db_pass = "pass";
+$db_host = "{{ database }}";
+$db_name = "{{ my_db }}";
+$db_user = "{{ user }}";
+$db_pass = "{{ pass }}";
 
 $conn = new mysqli($db_host, $db_name, $db_pass, $db_name);
 
