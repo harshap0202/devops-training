@@ -4,18 +4,31 @@ In this capstone project, you will create a comprehensive automated deployment p
 
 ## Milestone 1: Environment Setup
 Objective: Configure your development environment and AWS infrastructure.
+
 Tasks:
  - Launch an AWS EC2 instance running Ubuntu.
  - Install Ansible and Git on your local machine or control node.
+
 Deliverables:
  - AWS EC2 instance running Ubuntu.
  - Local or remote control node with Ansible and Git installed.
 
 ## Milestone 2: Create Ansible Role Structure
 Objective: Organize your Ansible project using best practices for playbooks and roles.
+
 Tasks:
  - Use Ansible Galaxy to create roles for web server, database, and application deployment.
  - Define the directory structure and initialize each role.
+
+Commands Used: 
+
+ - To Create ansible roles
+```bash
+ansible-galaxy init roles/application
+ansible-galaxy init roles/database
+ansible-galaxy init roles/webserver
+```
+
 Deliverables:
  - Ansible role directories for webserver, database, and application.
 
@@ -23,46 +36,78 @@ Deliverables:
 
 ## Milestone 3: Version Control with Git
 Objective: Implement version control for your Ansible project.
+
 Tasks:
  - Initialize a Git repository in your project directory.
  - Create a .gitignore file to exclude unnecessary files.
  - Commit and push initial codebase to a remote repository.
+
+Commands Used: 
+
+ - To create `.gitignore` file
+```bash
+nano .gitignore
+```
+
+ - To initialize git and push code
+```bash
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:harshap0202/dynamic-inventory-task.git
+git push -u origin main
+```
+
 Deliverables:
+
  - Git repository with initial Ansible codebase.
 
 ![alt text](<img/Screenshot from 2024-08-06 17-09-57.png>)
 
  - Remote repository link (e.g., GitHub).
 
-
+https://github.com/harshap0202/devops-training/tree/main/day-19
 
 ## Milestone 4: Develop Ansible Roles
 Objective: Write Ansible roles for web server, database, and application deployment.
+
 Tasks:
  - Define tasks, handlers, files, templates, and variables within each role.
  - Ensure each role is modular and reusable.
+
 Deliverables:
  - Completed Ansible roles for webserver, database, and application.
+    - [application](roles/application)
+    - [database](roles/database)
+    - [webserver](roles/webserver)
 
 ## Milestone 5: Documentation and Maintenance
 Objective: Document your Ansible roles and playbooks for future maintenance.
+
 Tasks:
  - Create README.md files for each role explaining purpose, variables, tasks, and handlers.
  - Add comments within your playbooks and roles to explain complex logic.
+
 Deliverables:
  - README.md files for webserver, database, and application roles.
  - Well-documented playbooks and roles.
+     - [application - README.md](roles/application/README.md)
+     - [database - README.md](roles/database/README.md)
+     - [webserver - README.md](roles/webserver/README.md)
 
 ## Milestone 6: Dynamic Inventory Script
 Objective: Use dynamic inventory scripts to manage AWS EC2 instances.
+
 Tasks:
  - Write a Python script that queries AWS to get the list of EC2 instances.
  - Format the output as an Ansible inventory.
+
 Deliverables:
  - Dynamic inventory script to fetch EC2 instance details.
 
 ```py
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import json
 import boto3
 
