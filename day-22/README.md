@@ -146,5 +146,5 @@ max(node_filesystem_size_bytes - node_filesystem_free_bytes)
 Alert recieved on Alert Manager and forwarder to slack
 ![alt text](<img/Screenshot from 2024-08-10 17-20-36.png>)
 
-Alert shown in slack
-![alt text](<img/Screenshot from 2024-08-10 17-23-58.png>)
+Alert shown in slack on prometheus channel
+![alt text](<img/Screenshot from 2024-08-10 17-29-17.png>)
