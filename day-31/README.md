@@ -20,6 +20,7 @@ This capstone project is designed to assess participants' knowledge and practica
     ![alt text](<img/Screenshot from 2024-08-23 15-08-35.png>) 
     ![alt text](<img/Screenshot from 2024-08-23 15-11-46.png>)
      - Configure the backend in Terraform to use the S3 bucket and DynamoDB table.
+    ![alt text](<img/Screenshot from 2024-08-24 01-08-37.png>)
 
  - ### Step 2: Develop and Organize Modules
      - Develop separate modules for VPC, EC2, RDS, S3, and IAM.
