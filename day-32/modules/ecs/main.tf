@@ -2,6 +2,7 @@ resource "aws_ecs_cluster" "main" {
   name = var.cluster_name
 }
 
+
 resource "aws_ecs_task_definition" "main" {
   family                   = var.task_family_name
   container_definitions    = jsonencode([{
