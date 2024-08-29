@@ -41,3 +41,21 @@ sudo systemctl status grafana-server.service
 ![alt text](<img/Screenshot from 2024-08-29 12-00-21.png>)
 
 ![alt text](<img/Screenshot from 2024-08-29 12-00-48.png>)
+
+## Installing Prometheus and Installing Node-Exporter
+
+ - Prometheus installed and running
+![alt text](<img/Screenshot from 2024-08-29 12-21-17.png>)
+![alt text](<img/Screenshot from 2024-08-29 12-24-47.png>)
+
+ - Node Exporter installed and running
+![alt text](<img/Screenshot from 2024-08-29 12-21-34.png>)
+![alt text](<img/Screenshot from 2024-08-29 12-22-51.png>)
+
+## Configuring Prometheus with Grafana
+
+ - Adding prometheus data source in grafana
+![alt text](<img/Screenshot from 2024-08-29 12-44-31.png>)
+
+ - Running simple metrics promql query
+![alt text](<img/Screenshot from 2024-08-29 12-43-15.png>)
